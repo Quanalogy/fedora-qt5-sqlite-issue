@@ -1,0 +1,10 @@
+FROM fedora:27
+
+RUN dnf install gcc gcc-c++ qt5-qtbase-devel make -y
+
+RUN mkdir /build
+
+COPY main.cpp /build
+COPY fedora-qt5-sqlite-issue.pro /build
+
+RUN cd /build && qmake-qt5 && make
